@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedNova Healthcare</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f3fb;
+            color: #292b45;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #352b70;
+            color: white;
+            padding: 25px 8%;
+        }
+
+        header h1 {
+            font-size: 32px;
+        }
+
+        header p {
+            color: #dcd8ff;
+        }
+
+        nav {
+            background-color: #51439b;
+            padding: 15px 8%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        a:focus, button:focus, input:focus,
+        select:focus, textarea:focus {
+            outline: 3px solid #f0b429;
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: white;
+            color: black;
+            padding: 10px;
+        }
+
+        .skip-link:focus {
+            top: 10px;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 0;
+        }
+
+        section {
+            margin-bottom: 45px;
+        }
+
+        h2 {
+            color: #51439b;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #352b70;
+            margin-bottom: 10px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #dcd8ff, #e5f5ff);
+            padding: 55px 30px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .hero h2 {
+            font-size: 35px;
+            color: #352b70;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #51439b;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #352b70;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        article {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e3dff5;
+            box-shadow: 0 4px 10px rgba(53, 43, 112, 0.08);
+        }
+
+        article p {
+            margin-bottom: 8px;
+        }
+
+        .doctor-card {
+            border-top: 5px solid #7866c5;
+        }
+
+        .doctor-card .specialty {
+            color: #51439b;
+            font-weight: bold;
+        }
+
+        .about-box {
+            background-color: #e9e6f8;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(53, 43, 112, 0.08);
+        }
+
+        fieldset {
+            border: 1px solid #d6d0ed;
+            padding: 22px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #51439b;
+            padding: 0 8px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bdb6dc;
+            border-radius: 6px;
+            font: inherit;
+        }
+
+        .help-text {
+            font-size: 14px;
+            color: #62627a;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-top: 6px;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+        }
+
+        button {
+            background-color: #51439b;
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #352b70;
+        }
+
+        #form-status {
+            margin-top: 15px;
+            color: #226344;
+        }
+
+        aside {
+            background-color: #e5f5ff;
+            padding: 25px;
+            border-left: 5px solid #51439b;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #29234f;
+            color: white;
+            padding: 35px 8%;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        footer h2, footer h3 {
+            color: #dcd8ff;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            color: #dcd8ff;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #655e8d;
+            margin-top: 25px;
+            padding-top: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero h2 {
+                font-size: 26px;
+            }
+
+            form {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">
+        Skip to main content
+    </a>
+
+    <header>
+        <h1>MedNova Healthcare</h1>
+        <p>Your Health, Our Commitment</p>
+    </header>
+
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#doctors">Our Doctors</a></li>
+            <li><a href="#appointment">Appointment</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+
+        <!-- Home -->
+        <section id="home" class="hero">
+            <h2>Welcome to MedNova Healthcare</h2>
+            <p>
+                Experience trusted healthcare with modern facilities,
+                qualified specialists and compassionate patient care.
+                We are committed to making your health our priority.
+            </p>
+            <a href="#appointment" class="btn">Schedule a Visit</a>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <h2>About MedNova</h2>
+
+            <div class="about-box">
+                <p>
+                    MedNova Healthcare is a patient-focused medical center
+                    dedicated to delivering quality healthcare services.
+                    Our team combines medical expertise, modern technology
+                    and personalized care to support patients at every stage.
+                </p>
+                <br>
+                <p>
+                    <strong>Mission:</strong> To provide accessible,
+                    reliable and compassionate healthcare.
+                </p>
+                <p>
+                    <strong>Vision:</strong> To create a healthier community
+                    through medical excellence and innovation.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services">
+            <h2>Our Healthcare Services</h2>
+
+            <div class="card-container">
+
+                <article>
+                    <h3>Neurology</h3>
+                    <p>
+                        Consultation and care for neurological
+                        health conditions.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Dermatology</h3>
+                    <p>
+                        Medical consultation for skin,
+                        hair and related concerns.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Gynecology</h3>
+                    <p>
+                        Women's healthcare and
+                        reproductive health services.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Dental Care</h3>
+                    <p>
+                        Oral examinations and
+                        preventive dental services.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Ophthalmology</h3>
+                    <p>
+                        Eye examinations and
+                        vision-related healthcare.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Physiotherapy</h3>
+                    <p>
+                        Rehabilitation and mobility support
+                        through physical therapy.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Doctors -->
+        <section id="doctors">
+            <h2>Our Specialists</h2>
+
+            <div class="card-container">
+
+                <article class="doctor-card">
+                    <h3>Dr. Ananya Reddy</h3>
+                    <p class="specialty">Neurologist</p>
+                    <p>Experience: 11 Years</p>
+                    <p>Specializes in neurological consultation and care.</p>
+                </article>
+
+                <article class="doctor-card">
+                    <h3>Dr. Karthik Varma</h3>
+                    <p class="specialty">Dermatologist</p>
+                    <p>Experience: 8 Years</p>
+                    <p>Specializes in dermatological health and treatment.</p>
+                </article>
+
+                <article class="doctor-card">
+                    <h3>Dr. Meera Nair</h3>
+                    <p class="specialty">Gynecologist</p>
+                    <p>Experience: 14 Years</p>
+                    <p>Specializes in women's healthcare.</p>
+                </article>
+
+                <article class="doctor-card">
+                    <h3>Dr. Siddharth Rao</h3>
+                    <p class="specialty">Dentist</p>
+                    <p>Experience: 6 Years</p>
+                    <p>Specializes in dental care and oral health.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Appointment Form -->
+        <section id="appointment">
+            <h2>Book Your Appointment</h2>
+
+            <p>
+                Complete the form below to request your consultation.
+                Fields marked * are mandatory.
+            </p>
+
+            <form id="appointment-form">
+
+                <fieldset>
+                    <legend>Patient Information</legend>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text"
+                                   id="name"
+                                   name="name"
+                                   autocomplete="name"
+                                   minlength="2"
+                                   maxlength="60"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email"
+                                   id="email"
+                                   name="email"
+                                   autocomplete="email"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Mobile Number *</label>
+                            <input type="tel"
+                                   id="phone"
+                                   name="phone"
+                                   pattern="[0-9]{10}"
+                                   maxlength="10"
+                                   inputmode="numeric"
+                                   aria-describedby="phone-help"
+                                   required>
+                            <small id="phone-help" class="help-text">
+                                Enter a 10-digit mobile number.
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number"
+                                   id="age"
+                                   name="age"
+                                   min="1"
+                                   max="120">
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Appointment Information</legend>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="department">Department *</label>
+                            <select id="department"
+                                    name="department"
+                                    required>
+                                <option value="">Choose a department</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="gynecology">Gynecology</option>
+                                <option value="dental">Dental Care</option>
+                                <option value="ophthalmology">Ophthalmology</option>
+                                <option value="physiotherapy">Physiotherapy</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="doctor">Preferred Doctor</label>
+                            <select id="doctor" name="doctor">
+                                <option value="">Any Available Doctor</option>
+                                <option value="ananya">Dr. Ananya Reddy</option>
+                                <option value="karthik">Dr. Karthik Varma</option>
+                                <option value="meera">Dr. Meera Nair</option>
+                                <option value="siddharth">Dr. Siddharth Rao</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Appointment Date *</label>
+                            <input type="date"
+                                   id="date"
+                                   name="date"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Appointment Time *</label>
+                            <select id="time" name="time" required>
+                                <option value="">Select Time</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason for Visit</label>
+                        <textarea id="reason"
+                                  name="reason"
+                                  rows="4"
+                                  maxlength="500"
+                                  placeholder="Describe the reason for your visit"></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Confirmation</legend>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox"
+                               id="confirm"
+                               name="confirm"
+                               required>
+
+                        <label for="confirm">
+                            I confirm that the information provided
+                            is correct. *
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button type="submit">Confirm Appointment</button>
+
+                <p id="form-status" role="status" aria-live="polite"></p>
+
+            </form>
+        </section>
+
+        <aside>
+            <h2>Patient Guidelines</h2>
+            <p>
+                Please arrive 15 minutes before your scheduled appointment.
+                Carry your identification and previous medical reports
+                if they are relevant to your consultation.
+            </p>
+        </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+
+        <div class="footer-container">
+
+            <section>
+                <h2>MedNova Healthcare</h2>
+                <p>Healthcare with compassion and excellence.</p>
+            </section>
+
+            <section>
+                <h3>Contact Details</h3>
+                <p>Email: care@mednova.example</p>
+                <p>Phone: 9876543210</p>
+                <p>Address: Vijayawada, Andhra Pradesh</p>
+            </section>
+
+            <section>
+                <h3>Quick Navigation</h3>
+                <p><a href="#services">Healthcare Services</a></p>
+                <p><a href="#doctors">Our Specialists</a></p>
+                <p><a href="#appointment">Book Appointment</a></p>
+            </section>
+
+        </div>
+
+        <p class="copyright">
+            &copy; 2026 MedNova Healthcare. All rights reserved.
+        </p>
+
+    </footer>
+
+    <!-- JavaScript validation -->
+    <script>
+        const form = document.getElementById("appointment-form");
+        const status = document.getElementById("form-status");
+        const dateField = document.getElementById("date");
+
+        // Prevent past appointment dates
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, "0");
+        const dd = String(today.getDate()).padStart(2, "0");
+
+        dateField.min = `${yyyy}-${mm}-${dd}`;
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                status.textContent =
+                    "Please fill in all required fields correctly.";
+                return;
+            }
+
+            status.textContent =
+                "Your appointment request has been submitted successfully!";
+
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
